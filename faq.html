@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — PeckedByBirds</title>
+    <link rel="stylesheet" href="main.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <a class="skipLink" href="#main">Skip to content</a>
+
+    <header class="navWrap">
+        <nav class="nav" aria-label="Primary">
+            <a class="nav__logoBox" href="index.html">
+                <span class="nav__logoImgs" aria-hidden="true">
+                    <img id="logo_standing" class="nav__logo" src="assets/logo_stand.png" alt="">
+                    <img id="logo_pecking" class="nav__logo" src="assets/logo_peck.png" alt="">
+                </span>
+                <span class="nav__logoTitle">PeckedByBirds</span>
+            </a>
+
+            <div class="nav__content">
+                <div class="nav__links" id="nav_links">
+                    <a class="nav__button" href="index.html#services">Services</a>
+                    <a class="nav__button" href="index.html#portfolio">Portfolio</a>
+                    <a class="nav__button" href="index.html#team">Team</a>
+                    <a class="nav__button" href="index.html#contact">Contact</a>
+                    <a class="nav__button nav__button--ghost" href="faq.html">FAQ</a>
+                </div>
+
+                <button class="nav__hamburger" id="nav_toggle" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="nav_drawer">
+                    <span class="nav__hamburgerBars" aria-hidden="true"></span>
+                </button>
+            </div>
+        </nav>
+        <div class="navDrawer" id="nav_drawer" hidden>
+            <a class="navDrawer__link" href="#services">Services</a>
+            <a class="navDrawer__link" href="#portfolio">Portfolio</a>
+            <a class="navDrawer__link" href="#team">Team</a>
+            <a class="navDrawer__link" href="#contact">Contact</a>
+            <a class="navDrawer__link" href="faq.html">FAQ</a>
+        </div>
+    </header>
+
+    <main id="main" class="container">
+        <section class="section">
+            <div class="section__header">
+                <h1 class="pageTitle">FAQs</h1>
+                <p>Quick answers. If you don't see your question, send a message and we'll talk it through.</p>
+            </div>
+
+            <div class="faq">
+                <details class="faq__item" open>
+                    <summary>Why are you called PeckedByBirds?</summary>
+                    <div class="faq__body">
+                        <p>
+                            Our name is a reference to the Greek myth of Prometheus. According to the myth, Prometheus
+                            stole fire from the gods
+                            and gave it to man as a gift. The gods didn't appreciate this, and Zeus punished Prometheus
+                            by chaining him to a rock,
+                            where his regenerating liver was pecked out by an eagle each day. Pretty metal, huh?
+                        </p>
+                        <p>
+                            While we don't work with fire or theft, we aim to follow in the footsteps of Prometheus by
+                            providing cutting-edge,
+                            hand-crafted websites (our "fire") to your customers.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="faq__item">
+                    <summary>How much do you charge?</summary>
+                    <div class="faq__body">
+                        <p>
+                            Fees vary depending on size (how much content and how many pages),
+                            complexity (custom technology, integrations, animations),
+                            and timeline (two weeks vs two months).
+                        </p>
+                        <p>
+                            A basic website that displays largely static information typically costs under
+                            <strong>$500</strong>.
+                            Websites with user authentication and custom data input can be over <strong>$1000</strong>,
+                            depending on requirements.
+                        </p>
+                        <p>
+                            Best next step: use the contact form so we can quote something representative of your scope.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="faq__item">
+                    <summary>How quickly can you build my website?</summary>
+                    <div class="faq__body">
+                        <p>
+                            We can turn projects around as quickly as <strong>2 weeks</strong> (rush builds), which
+                            typically comes with additional cost.
+                            Most projects land in the <strong>1-2 month</strong> range depending on complexity and
+                            feedback cycles.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="faq__item">
+                    <summary>Can you deploy my website?</summary>
+                    <div class="faq__body">
+                        <p>
+                            Yes. All customers get access to a staging version of their website (username + password)
+                            during development.
+                            Once the final product is ready, we provide complete source code and deployment instructions
+                            for common platforms.
+                        </p>
+                        <p>
+                            For an additional fee, we can deploy your site onto the platform of your choice.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="faq__item">
+                    <summary>Can you host my website?</summary>
+                    <div class="faq__body">
+                        <p>
+                            Yes! We can fully manage hosting starting at <strong>$20/mo</strong> (plus domain charges,
+                            usually $1-5/mo).
+                            More complicated sites with additional storage or traffic needs may cost more.
+                        </p>
+                        <p>
+                            If hosting is interesting, reach out and we'll propose an option that fits your needs.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="faq__item">
+                    <summary>Can you build my website with &lt;insert technology here&gt;?</summary>
+                    <div class="faq__body">
+                        <p>
+                            We can certainly try. We prefer choosing the stack that's most efficient for your
+                            requirements,
+                            but we're adaptable and can transfer our experience to new tools when it's the right fit.
+                        </p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="callout">
+                <div class="callout__title">Ready to get started?</div>
+                <p class="muted">Send a short description of what you need and your timeline.</p>
+                <a class="btn btn--primary" href="index.html#contact">Go to contact</a>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer__inner">
+                <div class="footer__left">
+                    <div class="footer__brand">PeckedByBirds</div>
+                    <div class="muted">Bespoke websites & technical solutions.</div>
+                </div>
+                <div class="footer__right">
+                    <a class="nav__button" href="index.html#services">Services</a>
+                    <a class="nav__button" href="index.html#contact">Contact</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        const standing = document.getElementById("logo_standing");
+        const pecking = document.getElementById("logo_pecking");
+
+        function peck() {
+            standing.style.opacity = "0";
+            pecking.style.opacity = "1";
+            setTimeout(stand, (Math.random() * 100) + 100);
+        }
+        function stand() {
+            standing.style.opacity = "1";
+            pecking.style.opacity = "0";
+            setTimeout(peck, (Math.random() * 3500) + 500);
+        }
+
+        stand()
+    </script>
+</body>
+
+</html>

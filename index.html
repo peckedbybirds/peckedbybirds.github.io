@@ -1,79 +1,343 @@
-<!doctype html>
-<html lang="en" data-bs-theme="midnight">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PeckedByBirds</title>
+    <link rel="stylesheet" href="main.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-CwghjxBr.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CJoxRIwV.css">
-  </head>
-  <body>
-    <div class="container py-4 px-3 mx-auto">
-        <section>
-            <div class="row mb-4">
-                <div class="col-12 d-flex justify-content-center">
-                    <img id="logo_standing" style="height: 75px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABwCAYAAABbwT+GAAABhWlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TS0UrDnZQEclQnayDijjWKhShQqgVWnUwufRDaNKQpLg4Cq4FBz8Wqw4uzro6uAqC4AeIs4OToouU+L+00CLGg+N+vLv3uHsHCLUS06yOGKDptplKxMVMdkUMviKAYXRjAOMys4xZSUrCc3zdw8fXuyjP8j735+hRcxYDfCJxjBmmTbxOPL1pG5z3icOsKKvE58RjJl2Q+JHrSoPfOBdcFnhm2Eyn5ojDxGKhjZU2ZkVTI54ijqiaTvlCpsEq5y3OWqnCmvfkLwzl9OUlrtMcQgILWIQEEQoq2EAJNqK06qRYSNF+3MM/6Polcink2gAjxzzK0CC7fvA/+N2tlZ+caCSF4kDgxXE+RoDgLlCvOs73sePUTwD/M3Clt/zlGjDzSXq1pUWOgN5t4OK6pSl7wOUO0P9kyKbsSn6aQj4PvJ/RN2WBvluga7XRW3Mfpw9AmrpK3gAHh8BogbLXPN7d2d7bv2ea/f0AwgZyxheWdysAAAAGYktHRAD/AAAAADMnfPMAAAAJcEhZcwAADdcAAA3XAUIom3gAAAAHdElNRQfoBR4LLhRTba4jAAAByklEQVR42u3cu3ICMRAEQETd//+yyMmudvVadcdO0DE1GmPTPkzVe+9vfr611pzaOl9HAAICAgLZ3G832xw2iQYBAQEBARuElZvDJtEgICAgIGCDsHJz2CQaBAQEBAQO9ziCszcHGgQEBAQEDuN35sU2ic9BNAgICAgI2CA2iU2iQUBAQEAAG8QmQYOAgICAgA1ig9gkGgQEBAQEbBBsEg0CCAgICNggNoiNokFAQEBAwAbhhg1y2ybRICAgICBgg9ggNokGAQEBAQEbBBuk6ibRICAgICBgg9ggNokGAQEBAQEbBBuk6ibRICAgICBgg9ggNokGAQEBAQEbBJvEBgFXLEBAoOoGid7Zd7vj2iB7Py8NAgICAgL1NsjqO7hNYoNoEBAQEBDYa4P4Llmb5Obno0FAQEBAYPwG8d2xe39Pk00y93lpEBAQEBDIv8LZHK30/+VnP9/oeY1+v2U/Tw0CAgICAjaIzRG789/2OU/09WoQEBAQEEj3OAJO2ohvN0p0g2kQEBAQEMi/8kXveKfdYW9z2ucg0deX/X7RICAgICAwfoOctklu/9sq55V7Xv/no0HAFQsEBOZvkNkbxecYaBAQEBAQKO0HloSkx2B/3/QAAAAASUVORK5CYII=">
-                    <img id="logo_pecking" style="height: 75px; display: none;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABwCAYAAABbwT+GAAABhWlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TS0UrDnZQEclQnayDijjWKhShQqgVWnUwufRDaNKQpLg4Cq4FBz8Wqw4uzro6uAqC4AeIs4OToouU+L+00CLGg+N+vLv3uHsHCLUS06yOGKDptplKxMVMdkUMviKAYXRjAOMys4xZSUrCc3zdw8fXuyjP8j735+hRcxYDfCJxjBmmTbxOPL1pG5z3icOsKKvE58RjJl2Q+JHrSoPfOBdcFnhm2Eyn5ojDxGKhjZU2ZkVTI54ijqiaTvlCpsEq5y3OWqnCmvfkLwzl9OUlrtMcQgILWIQEEQoq2EAJNqK06qRYSNF+3MM/6Polcink2gAjxzzK0CC7fvA/+N2tlZ+caCSF4kDgxXE+RoDgLlCvOs73sePUTwD/M3Clt/zlGjDzSXq1pUWOgN5t4OK6pSl7wOUO0P9kyKbsSn6aQj4PvJ/RN2WBvluga7XRW3Mfpw9AmrpK3gAHh8BogbLXPN7d2d7bv2ea/f0AwgZyxheWdysAAAAGYktHRAD/AAAAADMnfPMAAAAJcEhZcwAADdcAAA3XAUIom3gAAAAHdElNRQfoBR4LLghHbPJsAAABfUlEQVR42u3dQY6EIBAFUOlw/yvjvjeGgCVQ761n0qPxp+q3mrkuAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD7ltANqrbWpJ6iU4jLJ6+cUgICAgIAO8nLn4OULbrNOZ4KAgICAgA6icxDZiUwQEBAQEJiuvt0Rer/3Hv19mHn9mCAgICAgMH9F2+0Pdh9EpzBBwIoFAgI6iE7CKp3BBAEBAQGB5dXoD+x91sqzWTqHCQICAgICZ62Mux/A032Q3o5D7s5hgoCAgICADjK7M4y+I69z5LoPZYKAgICAwHkd5OsdXyfROUwQEBAQEFirg9i5c50f79uYICAgICAQ3UGyP3s0uoPvdv50DhMEBAQEBKJXUJ0jdgff7dkzEwQQEBAQmKxmO+Cvd/D/z/fOuwkCAgICAjoIJ3UiHccEAQEBAYHVOshp38t71ggTBAQEBATWXtmffmD1TpKtc0T/fxQTBBAQEBCI7iDRHcWOjAkCAgICAke7Aa4+bJ6Hf6ZNAAAAAElFTkSuQmCC">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <a class="skipLink" href="#main">Skip to content</a>
+
+    <header class="navWrap">
+        <nav class="nav" aria-label="Primary">
+            <a class="nav__logoBox" href="index.html">
+                <span class="nav__logoImgs" aria-hidden="true">
+                    <img id="logo_standing" class="nav__logo" src="assets/logo_stand.png" alt="">
+                    <img id="logo_pecking" class="nav__logo" src="assets/logo_peck.png" alt="">
+                </span>
+                <span class="nav__logoTitle">PeckedByBirds</span>
+            </a>
+
+            <div class="nav__content">
+                <div class="nav__links" id="nav_links">
+                    <a class="nav__button" href="#services">Services</a>
+                    <a class="nav__button" href="#portfolio">Portfolio</a>
+                    <a class="nav__button" href="#team">Team</a>
+                    <a class="nav__button" href="#contact">Contact</a>
+                    <a class="nav__button nav__button--ghost" href="faq.html">FAQ</a>
+                </div>
+
+                <button class="nav__hamburger" id="nav_toggle" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="nav_drawer">
+                    <span class="nav__hamburgerBars" aria-hidden="true"></span>
+                </button>
+            </div>
+        </nav>
+        <div class="navDrawer" id="nav_drawer" hidden>
+            <a class="navDrawer__link" href="#services">Services</a>
+            <a class="navDrawer__link" href="#portfolio">Portfolio</a>
+            <a class="navDrawer__link" href="#team">Team</a>
+            <a class="navDrawer__link" href="#contact">Contact</a>
+            <a class="navDrawer__link" href="faq.html">FAQ</a>
+        </div>
+    </header>
+
+
+    <main id="main" class="container">
+        <section class="hero">
+            <div class="hero__left">
+                <div class="pill">Bespoke websites & technical solutions</div>
+                <h1 class="hero__title">Fast. Focused. Built for You.</h1>
+                <p class="hero__subtitle">
+                    PeckedByBirds builds hand-crafted websites that load quickly, look sharp, and ship on time.
+                    From landing pages to authenticated web apps - we design, build, and deploy with care.
+                </p>
+
+                <div class="hero__ctaRow">
+                    <a class="btn btn--primary" href="#contact">Get a quote</a>
+                    <a class="btn btn--secondary" href="#portfolio">See work</a>
+                </div>
+
+                <div class="hero__badges" aria-label="Highlights">
+                    <div class="badge">Mobile-first</div>
+                    <div class="badge">Accessible</div>
+                    <div class="badge">SEO-ready</div>
+                    <div class="badge">Clean handoff</div>
                 </div>
             </div>
-            <p style="font-size: xx-small;" class="text-center">Prometheus was punished by the gods for giving the gift of knowledge to man. He was cast into the bowels of the earth and</p>
-            <h1 class="text-center">PeckedByBirds</h1>
-            <p style="font-size: xx-small;" class="text-center">- Oracle Turret from <em>Portal 2</em></p>
-        </section>
-        <section>
-            <div class="row">
-            <div class="col d-flex flex-column align-items-center mx-2">
-                <img style="width: 60%;" src="/assets/matt-BQDiZL8_.png">
-                <h4 class="text-center mt-2">Matthew Anderson</h4>
-                <p style="font-size: small;" class="text-center"><a href="https://mja129.dev/"><em>https://mja129.dev</em></a></p>
-                <p class="text-center">Frontend</p>
-            </div>
-            <div class="col d-flex flex-column align-items-center mx-2">
-                <img style="width: 60%;" src="/assets/griffin-BZiP1aOP.png">
-                <h4 class="mt-2 text-center">Griffin Hurt</h4>
-                <p style="font-size: small;" class="text-center"><a href="https://griffinhurt.com/"><em>https://griffinhurt.com</em></a></p>
-                <p class="text-center">Backend</p>
-            </div>
-            </div>
-        </section>
-        <section class="mt-4">
-            <h3 class="text-center">Projects</h3>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <h6>Surreality Lab</h6>
-                    <p style="font-size: small;"><a href="https://surreality.pitt.edu"><em>https://surreality.pitt.edu</em></a></p>
-                    <p style="font-size: small;">The official website of University of Pittsburgh's Surreality Lab.</p>
-                </li>
-                <li class="list-group-item">
-                    <h6>Off the Aux</h6>
-                    <p style="font-size: small;"><a href="https://offtheaux.io"><em>https://offtheaux.io</em></a></p>
-                    <p style="font-size: small;"><em>Coming soon...</em></p>
-                    <p style="font-size: small;">As a radio DJ, your job revolves around picking the next song and announcing it in an... erm... <em>unconventional</em> way. Play with friends to fill in the best song for the announcement using your Spotify library!</p>
-                </li>
-                <li class="list-group-item">More to come...</li>
-            </ul>
-        </section>
-        <footer class="mt-4">
-            <p class="text-center" style="font-size: x-small;">© 2024 PeckedByBirds</p>
-        </footer>
-    </div>
-    <script>
-        function peck() {
-            document.getElementById("logo_standing").style.display = "none";
-            document.getElementById("logo_pecking").style.display = "";
-            window.setTimeout(stand, (Math.random() * 100) + 100)
-        }
 
+            <aside class="hero__right" aria-label="Project outcomes">
+                <div class="card">
+                    <div class="card__title">What you get</div>
+                    <ul class="list">
+                        <li>Custom design tailored to your brand</li>
+                        <li>Fast performance + best-practice SEO</li>
+                        <li>Responsive layouts (phone → desktop)</li>
+                        <li>Optional auth / dashboards / integrations</li>
+                        <li>Staging site for review + iterations</li>
+                    </ul>
+                </div>
+
+                <div class="card card--outline">
+                    <div class="card__title">Typical timeline</div>
+                    <div class="statRow">
+                        <div class="stat">
+                            <div class="stat__num">2-8 wks</div>
+                            <div class="stat__label">Most builds</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat__num">2 wks</div>
+                            <div class="stat__label">Rush option</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <section id="services" class="section">
+            <div class="section__header">
+                <h2>Services</h2>
+                <p>Pick what you need and we'll tailor the scope and stack to fit.</p>
+            </div>
+
+            <div class="grid grid--3">
+                <div class="card">
+                    <div class="card__title">Bespoke Websites</div>
+                    <p class="muted">Landing pages, portfolios, business sites, clinics, labs, startups.</p>
+                    <ul class="list">
+                        <li>Custom look (not a template)</li>
+                        <li>Mobile-first responsive design</li>
+                        <li>SEO + analytics setup</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card__title">Web Apps</div>
+                    <p class="muted">Authentication, dashboards, data entry, and internal tools.</p>
+                    <ul class="list">
+                        <li>User accounts + permissions</li>
+                        <li>APIs, databases, forms</li>
+                        <li>Integrations (Stripe, email, CRMs)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card__title">Deploy & Maintain</div>
+                    <p class="muted">We can hand off source code — or host + manage for you.</p>
+                    <ul class="list">
+                        <li>Staging + production pipelines</li>
+                        <li>Managed hosting (optional)</li>
+                        <li>Updates, backups, monitoring</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section">
+            <div class="section__header">
+                <h2>Portfolio</h2>
+                <p>See some of our previous projects.</p>
+            </div>
+
+            <div class="grid grid--2">
+                <a class="workCard" href="https://surreality.pitt.edu/" aria-label="Surreality Lab Website">
+                    <div class="workCard__thumb">
+                        <img class="workCard__img" src="assets/surreality_lab_site.png">
+                    </div>
+                    <div class="workCard__body">
+                        <div class="workCard__title">Surreality Lab Website</div>
+                        <div class="workCard__meta">Admin Panel • Animations • Responsive</div>
+                    </div>
+                </a>
+
+                <a class="workCard" href="#" aria-label="Pittsburgh Hand Therapy Conference Website">
+                    <div class="workCard__thumb">
+                        <img class="workCard__img" src="assets/hand_therapy.png">
+                    </div>
+                    <div class="workCard__body">
+                        <div class="workCard__title">Pittsburgh Hand Therapy Conference Website</div>
+                        <div class="workCard__meta">Auth • Rush Timing • Custom UI</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="team" class="section">
+            <div class="section__header">
+                <h2>Team</h2>
+                <p>Small team, high ownership. You'll talk to the people building your site.</p>
+            </div>
+
+            <div class="grid grid--team">
+                <div class="card">
+                    <img class="avatar" src="assets/matthew.jpg" aria-hidden="true">
+                    <div class="card__title">Matthew Anderson</div>
+                    <p class="muted">Frontend • UI/UX • Responsive Design</p>
+                </div>
+
+                <div class="card">
+                    <img class="avatar" src="assets/griffin.jpg" aria-hidden="true">
+                    <div class="card__title">Griffin Hurt</div>
+                    <p class="muted">Backend • API Integration • Databases</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section section--accent">
+            <div class="section__header">
+                <h2>Contact</h2>
+                <p>Tell us what you're building. We'll respond with questions and an estimate.</p>
+            </div>
+
+            <form class="form" id="contactForm">
+                <div class="grid grid--2">
+                    <label class="field">
+                        <span>Name</span>
+                        <input class="input" name="name" autocomplete="name" required>
+                    </label>
+
+                    <label class="field">
+                        <span>Email</span>
+                        <input class="input" type="email" name="email" autocomplete="email" required>
+                    </label>
+                </div>
+
+                <label class="field">
+                    <span>What do you need?</span>
+                    <select class="input" name="need">
+                        <option>Website (static / marketing)</option>
+                        <option>Web app (auth / dashboard / data)</option>
+                        <option>Redesign / performance / SEO</option>
+                        <option>Hosting / deployment / maintenance</option>
+                        <option>Not sure yet</option>
+                    </select>
+                </label>
+
+                <label class="field">
+                    <span>Details</span>
+                    <textarea class="input input--textarea" name="details" rows="6"
+                        placeholder="Pages, features, timeline, inspiration links..."></textarea>
+                </label>
+
+                <div class="form__row">
+                    <button class="btn btn--primary" type="submit">Send</button>
+                    <a class="btn btn--secondary" href="faq.html">Read FAQ</a>
+                </div>
+
+                <p class="fineprint">
+                    You can also reach us directly at <span class="mono">contact@peckedbybirds.com</span>
+                </p>
+            </form>
+        </section>
+
+        <footer class="footer">
+            <div class="footer__inner">
+                <div class="footer__left">
+                    <div class="footer__brand">PeckedByBirds</div>
+                    <div class="muted">Bespoke websites & technical solutions.</div>
+                </div>
+                <div class="footer__right">
+                    <a class="nav__button" href="faq.html">FAQ</a>
+                    <a class="nav__button" href="#contact">Contact</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        const standing = document.getElementById("logo_standing");
+        const pecking = document.getElementById("logo_pecking");
+
+        function peck() {
+            standing.style.opacity = "0";
+            pecking.style.opacity = "1";
+            setTimeout(stand, (Math.random() * 100) + 100);
+        }
         function stand() {
-            document.getElementById("logo_standing").style.display = "";
-            document.getElementById("logo_pecking").style.display = "none";
-            window.setTimeout(peck, (Math.random() * 3500) + 500)
+            standing.style.opacity = "1";
+            pecking.style.opacity = "0";
+            setTimeout(peck, (Math.random() * 3500) + 500);
         }
 
         stand()
     </script>
-  </body>
+
+    <script>
+            (function () {
+                const form = document.getElementById("contactForm");
+                if (!form) return;
+
+                form.addEventListener("submit", (e) => {
+                    e.preventDefault();
+
+                    const name = (form.querySelector('[name="name"]')?.value || "").trim();
+                    const email = (form.querySelector('[name="email"]')?.value || "").trim();
+                    const need = (form.querySelector('[name="need"]')?.value || "").trim();
+                    const details = (form.querySelector('[name="details"]')?.value || "").trim();
+
+                    const to = "contact@peckedbybirds.com";
+                    const subject = `PeckedByBirds inquiry — ${need || "Website project"}`;
+
+                    const body =
+                        `Name: ${name}
+Email: ${email}
+Need: ${need}
+
+Details:
+${details}
+`;
+
+                    const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    window.location.href = mailto;
+                });
+            })();
+    </script>
+
+
+    <script>
+        (function () {
+            const toggle = document.getElementById("nav_toggle");
+            const drawer = document.getElementById("nav_drawer");
+
+            if (!toggle || !drawer) return;
+
+            function closeDrawer() {
+                drawer.hidden = true;
+                toggle.setAttribute("aria-expanded", "false");
+                toggle.setAttribute("aria-label", "Open menu");
+            }
+
+            function openDrawer() {
+                drawer.hidden = false;
+                toggle.setAttribute("aria-expanded", "true");
+                toggle.setAttribute("aria-label", "Close menu");
+            }
+
+            toggle.addEventListener("click", () => {
+                const isOpen = toggle.getAttribute("aria-expanded") === "true";
+                if (isOpen) closeDrawer(); else openDrawer();
+            });
+
+            drawer.addEventListener("click", (e) => {
+                const t = e.target;
+                if (t && t.tagName === "A") closeDrawer();
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeDrawer();
+            });
+        })();
+    </script>
+
+</body>
+
 </html>
